@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Sunshine IAK</string>
+    <string name="action_refresh">refresh</string>
+    <string name="action_settings">settings</string>
 </resources>

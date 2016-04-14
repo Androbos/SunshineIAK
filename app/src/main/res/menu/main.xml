@@ -7,6 +7,7 @@
         android:orderInCategory="100"
         android:title="@string/action_settings"
         tools:showAsAction="never"
+        tools:Context=".MainActivity"
         />
 
 </menu>

@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -39,7 +40,13 @@ public class MainActivity extends AppCompatActivity {
                     "Jumat - sangat cerah - 30/60",
                     "Sabtu - hujan - 30/60",
             };
-            List<String> weekForeCast = new ArrayList<String>(Arrays.asList(data));
+            List<String> weekForecast = new ArrayList<String>(Arrays.asList(data));
+            ArrayAdapter<String> adapter = new ArrayAdapter<String>(
+                    getActivity(),
+                    R.layout.list_item_forecast,
+                    R.id.list_item_forecast_textview,
+                    weekForecast
+            );
             View rootView = inflater.inflate(R.layout.fragment_main, container, false);
             return rootView;
         }

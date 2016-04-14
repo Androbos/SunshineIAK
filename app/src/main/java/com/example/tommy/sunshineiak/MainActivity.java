@@ -7,6 +7,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 public class MainActivity extends AppCompatActivity {
 
     @Override
@@ -26,6 +30,16 @@ public class MainActivity extends AppCompatActivity {
         @Override
         public View onCreateView(LayoutInflater inflater, ViewGroup container,
                                  Bundle savedInstanceState) {
+            String[] data = new String[]{
+                    "Minggu - hujan - 30/60",
+                    "Senin - cerah - 35/67",
+                    "Selasa - mendung - 36/67",
+                    "Rabu - berawan - 30/60",
+                    "Kamis - hujan - 30/60",
+                    "Jumat - sangat cerah - 30/60",
+                    "Sabtu - hujan - 30/60",
+            };
+            List<String> weekForeCast = new ArrayList<String>(Arrays.asList(data));
             View rootView = inflater.inflate(R.layout.fragment_main, container, false);
             return rootView;
         }

@@ -68,7 +68,9 @@ public ArrayAdapter<String> adapter;
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                String forecast = adapter.getItem(i);
                 Intent intent = new Intent(getActivity(), DetailActivity.class);
+                intent.putExtra(Intent.EXTRA_TEXT, forecast);
                 startActivity(intent);
 
             }

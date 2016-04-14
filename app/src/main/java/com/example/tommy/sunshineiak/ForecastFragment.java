@@ -1,5 +1,6 @@
 package com.example.tommy.sunshineiak;
 
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.util.Log;
@@ -111,5 +112,12 @@ public  class ForecastFragment extends Fragment {
         }
 
         return rootView;
+    }
+    public class FetchWeatherTask extends AsyncTask<Void , Void, Void>{
+
+        @Override
+        protected Void doInBackground(Void... params) {
+            return null;
+        }
     }
 }

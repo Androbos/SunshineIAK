@@ -3,5 +3,6 @@
     <string name="action_refresh">refresh</string>
     <string name="action_settings">settings</string>
     <string name="Hello_world">Hello World</string>
+    <string name="title_activity_settings">Settings Activity</string>
 
 </resources>

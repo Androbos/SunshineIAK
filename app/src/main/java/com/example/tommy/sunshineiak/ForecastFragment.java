@@ -31,8 +31,6 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
 
 /**
  * Created by tommy on 4/14/16.
@@ -48,21 +46,11 @@ public ArrayAdapter<String> adapter;
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
-        String[] data = new String[]{
-                "Minggu - hujan - 30/60",
-                "Senin - cerah - 35/67",
-                "Selasa - mendung - 36/67",
-                "Rabu - berawan - 30/60",
-                "Kamis - hujan - 30/60",
-                "Jumat - sangat cerah - 30/60",
-                "Sabtu - hujan - 30/60",
-        };
-        final List<String> weekForecast = new ArrayList<String>(Arrays.asList(data));
         adapter = new ArrayAdapter<String>(
                 getActivity(),
                 R.layout.list_item_forecast,
                 R.id.list_item_forecast_textview,
-                weekForecast
+                new ArrayList<String>()
         );
         View rootView = inflater.inflate(R.layout.fragment_main, container, false);
         ListView listView = (ListView)rootView.findViewById(R.id.listview_forecast);
@@ -99,12 +87,7 @@ public ArrayAdapter<String> adapter;
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
         if (id==R.id.action_refresh){
-            FetchWeatherTask fetchWeatherTask = new FetchWeatherTask();
-            SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(getActivity());
-            String location = prefs.getString(getString(R.string.pref_location_key),
-                    getString(R.string.pref_location_default));
-
-            fetchWeatherTask.execute(location);
+           updateWeather();
             return true;
         }
         return super.onOptionsItemSelected(item);
@@ -313,5 +296,19 @@ public ArrayAdapter<String> adapter;
                 }
             }
         }
+    }
+    private void updateWeather(){
+        FetchWeatherTask fetchWeatherTask = new FetchWeatherTask();
+        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(getActivity());
+        String location = prefs.getString(getString(R.string.pref_location_key),
+                getString(R.string.pref_location_default));
+
+        fetchWeatherTask.execute(location);
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        updateWeather();
     }
 }

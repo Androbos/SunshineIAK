@@ -4,7 +4,8 @@
     <string name="action_settings">settings</string>
     <string name="Hello_world">Hello World</string>
     <string name="title_activity_settings">Settings Activity</string>
-    
+    <string name="action_map">Map location</string>
+
     <string name="pref_location_label">location</string>
     <string name="pref_location_key" translatable="false">location</string>
     <string name="pref_location_default" translatable="false">Surabaya</string>

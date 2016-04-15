@@ -1,9 +1,11 @@
 package com.example.tommy.sunshineiak;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.v4.app.Fragment;
 import android.text.format.Time;
 import android.util.Log;
@@ -98,7 +100,11 @@ public ArrayAdapter<String> adapter;
         int id = item.getItemId();
         if (id==R.id.action_refresh){
             FetchWeatherTask fetchWeatherTask = new FetchWeatherTask();
-            fetchWeatherTask.execute("Surabaya");
+            SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(getActivity());
+            String location = prefs.getString(getString(R.string.pref_location_key),
+                    getString(R.string.pref_location_default));
+
+            fetchWeatherTask.execute(location);
             return true;
         }
         return super.onOptionsItemSelected(item);
